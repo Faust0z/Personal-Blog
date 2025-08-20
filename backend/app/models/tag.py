@@ -1,6 +1,7 @@
-from backend.app.extensions import db
-from backend.app.models.associations import articles_have_tags
+from ..extensions import db
+from .associations import articles_have_tags
 from datetime import datetime
+
 
 class Tag(db.Model):
     __tablename__ = "tags"
@@ -12,10 +13,3 @@ class Tag(db.Model):
 
     def __repr__(self):
         return f"<Article id={self.id} name={self.name}>"
-
-    def to_dict(self) -> dict:
-        return {
-            "ID": self.id,
-            "Name": self.name,
-            "Date Created": self.date_created
-        }

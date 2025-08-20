@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_migrate import Migrate
-from backend.app.extensions import db
-from backend.app.config.settings import DB_URI
-from backend.app import models
-from backend.app.controllers.articles import articles_bp
+from .extensions import db
+from .config.settings import DB_URI
+from . import models
+from .controllers.articles import articles_bp
+from .controllers.tags import tags_bp
 
 
 def create_app():
@@ -20,6 +21,7 @@ def create_app():
     migrate = Migrate(app, db)
 
     app.register_blueprint(articles_bp)
+    app.register_blueprint(tags_bp)
 
     @app.route("/")
     def index():

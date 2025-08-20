@@ -1,4 +1,4 @@
-from backend.app.extensions import db
+from ..extensions import db
 from datetime import datetime
 
 class User(db.Model):
@@ -11,10 +11,3 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User id={self.id} name={self.name}>"
-
-    def to_dict(self) -> dict:
-        return {
-            "ID": self.id,
-            "Name": self.name,
-            "Date Created": self.date_created
-        }

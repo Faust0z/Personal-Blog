@@ -1,4 +1,4 @@
-from backend.app.extensions import db
+from ..extensions import db
 
 articles_have_tags = db.Table(
     "article_tag",

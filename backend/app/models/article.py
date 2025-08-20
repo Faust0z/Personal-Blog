@@ -1,6 +1,7 @@
-from backend.app.extensions import db
-from backend.app.models.associations import articles_have_tags
+from ..extensions import db
+from .associations import articles_have_tags
 from datetime import datetime
+
 
 class Article(db.Model):
     __tablename__ = "articles"
@@ -8,21 +9,10 @@ class Article(db.Model):
     title: db.Mapped[str] = db.mapped_column(db.String, nullable=False)
     content: db.Mapped[str] = db.mapped_column(db.String, nullable=False)
     date_created: db.Mapped[datetime] = db.mapped_column(db.DateTime, default=datetime.now, )
-    user_id = db.mapped_column(db.ForeignKey("users.id"))
+    user_id = db.mapped_column(db.ForeignKey("users.id"), nullable=False)
 
     user: db.Mapped["User"] = db.relationship(back_populates="articles")
     tags: db.Mapped[list["Tag"]] = db.relationship(secondary=articles_have_tags, back_populates="articles")
 
     def __repr__(self):
         return f"<Article id={self.id} title={self.title}>"
-
-    def to_dict(self) -> dict:
-        return {
-            "ID": self.id,
-            "Title": self.title,
-            "Content": self.content,
-            "Date Created": self.date_created,
-            "User ID": self.user_id,
-            "Username": self.user.name if self.user else None,
-            "Tags": ", ".join(tag.name for tag in self.tags) if self.tags else ""
-        }
