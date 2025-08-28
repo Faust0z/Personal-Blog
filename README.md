@@ -1,6 +1,6 @@
 # A simple Personal Python Blogging Platform. 
 
-The app was developed with ***Flask*** + ***SQLite*** to create a REST API and using ***Streamlit*** for a simple frontend. The backend follows a standard **Controller-Service-Repository** pattern (although there's no repository layer in place due to the small scale) using common packages like Marshmallow for data validation and de/serealization and SQLAlchemy+Migrate for database management and connection.
+The app was developed with ***Flask*** + ***SQLite*** to create a REST API and using ***Streamlit*** for a simple frontend. The backend follows a standard **Controller-Service-Repository** pattern (although there's no repository layer in place due to the small scale) using common packages like Marshmallow for data validation and de/serialization and SQLAlchemy+Migrate for database management and connection.
 
 ### The web app allows the user to create, view and delete articles. 
 
@@ -17,7 +17,7 @@ The app was developed with ***Flask*** + ***SQLite*** to create a REST API and u
 
 # How to Run
 - Use Python <3.12
-- Execute in a terminal -> `pip install -r requirements.txt` (fronend and backend share this same file)
+- Execute in a terminal -> `pip install -r requirements.txt` (frontend and backend share this same file)
 - Run the `backend/app.py` file to start the REST API
 - Execute in a terminal -> `Streamlit run frontend/app.py`
 
